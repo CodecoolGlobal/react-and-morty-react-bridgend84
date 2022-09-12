@@ -1,0 +1,1 @@
+{isCharLoaded ? characters.results.map(char => (<p>{char.name}</p>)) : (<p>Loading...</p>)}

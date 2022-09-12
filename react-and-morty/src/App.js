@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import { useCharacters, useLocations } from "./api/useData";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const [isCharLoaded, setIsCharLoaded] = useState(false);
@@ -23,7 +24,8 @@ function App() {
   return (
     <div className="container-app">
       <Header />
-      {isCharLoaded ? characters.results.map(char => (<p>{char.name}</p>)) : (<p>Loading...</p>)}
+      <LandingPage />
+      
     </div>
   );
 }
