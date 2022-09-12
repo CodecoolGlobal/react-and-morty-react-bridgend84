@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
+import Header from "./components/Header";
 import { useCharacters, useLocations } from "./api/useData";
 
 function App() {
+  const [isCharLoaded, setIsCharLoaded] = useState(false);
+
   const characters = useCharacters(1);
   const locations = useLocations(1);
 
@@ -11,7 +14,18 @@ function App() {
   console.log("Locations data: ");
   console.log(locations);
 
-  return <div className="App">Take a look at the console! (F12)</div>;
+  useEffect(() => {
+    characters === "Loading..."
+      ? setIsCharLoaded(false)
+      : setIsCharLoaded(true);
+  });
+
+  return (
+    <div className="container-app">
+      <Header />
+      {isCharLoaded ? characters.results.map(char => (<p>{char.name}</p>)) : (<p>Loading...</p>)}
+    </div>
+  );
 }
 
 export default App;
