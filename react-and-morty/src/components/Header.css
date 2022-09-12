@@ -1,0 +1,9 @@
+.container-header {
+    display: flex;
+    justify-content: center;
+    height: 15rem;
+    background-image: url("https://i.imgur.com/MLL9xUy.png");
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
