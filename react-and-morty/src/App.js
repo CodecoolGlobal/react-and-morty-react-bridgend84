@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Header from "./components/Header";
 import { useCharacters, useLocations } from "./api/useData";
 
 function App() {
@@ -11,7 +12,12 @@ function App() {
   console.log("Locations data: ");
   console.log(locations);
 
-  return <div className="App">Take a look at the console! (F12)</div>;
+  return (
+    <div className="App">
+      <Header />
+      <h3>Take a look at the console! (F12)</h3>
+    </div>
+  );
 }
 
 export default App;
