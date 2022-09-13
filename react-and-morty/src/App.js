@@ -9,8 +9,9 @@ import Locations from "./components/Locations";
 function App() {
   const [isCharLoaded, setIsCharLoaded] = useState(false);
   const [page, setPage] = useState(0);
+  const [charPage, setCharPage] = useState(1);
 
-  const characters = useCharacters(1);
+  const characters = useCharacters(charPage);
   const locations = useLocations(1);
 
   console.log("Characters data: ");
@@ -22,10 +23,14 @@ function App() {
     characters === "Loading..."
       ? setIsCharLoaded(false)
       : setIsCharLoaded(true);
-  });
+  }, []);
 
   const selected = (p) => {
     setPage(p);
+  }
+
+  const charPageSelector = (p) => {
+    setCharPage(p)
   }
 
   return (
@@ -34,7 +39,7 @@ function App() {
       {page === 0 ? (
         <LandingPage />
       ) : page === 1 ? (
-        <Characters characters={characters.results}/>
+        <Characters characters={characters} pageSelector={charPageSelector}/>
       ) : (
         <Locations locations={locations.results}/>
       )}
