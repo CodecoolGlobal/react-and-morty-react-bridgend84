@@ -10,6 +10,7 @@ function App() {
   const [isCharLoaded, setIsCharLoaded] = useState(false);
   const [page, setPage] = useState(0);
   const [charPage, setCharPage] = useState(1);
+  const [locPage, setLocPage] = useState(1);
 
   const characters = useCharacters(charPage);
   const locations = useLocations(1);
@@ -27,21 +28,25 @@ function App() {
 
   const selected = (p) => {
     setPage(p);
-  }
+  };
 
   const charPageSelector = (p) => {
-    setCharPage(p)
-  }
+    setCharPage(p);
+  };
+
+  const locPageSelector = (p) => {
+    setLocPage(p);
+  };
 
   return (
     <div className="container-app">
-      <Header onSelect={selected}/>
+      <Header onSelect={selected} />
       {page === 0 ? (
         <LandingPage />
       ) : page === 1 ? (
-        <Characters characters={characters} pageSelector={charPageSelector}/>
+        <Characters characters={characters} pageSelector={charPageSelector} />
       ) : (
-        <Locations locations={locations.results}/>
+        <Locations locations={locations} pageSelector={locPageSelector} />
       )}
     </div>
   );
