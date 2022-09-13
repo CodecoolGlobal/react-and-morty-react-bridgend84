@@ -1,5 +1,6 @@
-.container-header {
+.header {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     height: 15rem;
     background-image: url("https://i.imgur.com/MLL9xUy.png");

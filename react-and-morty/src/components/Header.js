@@ -1,10 +1,11 @@
 import React from "react";
 import "./Header.css";
 import rNmLogo from "../static/rick-and-morty-logo.png";
+import "./Mobile.css"
 
 export default function Header() {
   return (
-    <div className="Header">
+    <div className="header">
       <div className="container-header">
         <img src={rNmLogo} />
       </div>
@@ -15,3 +16,5 @@ export default function Header() {
     </div>
   );
 }
+
+
