@@ -1,4 +1,12 @@
-import React from "react"
-import "./Characters.css"
+import React from "react";
+import "./Characters.css";
 
-{isCharLoaded ? characters.results.map(char => (<p>{char.name}</p>)) : (<p>Loading...</p>)}
+export default function Characters({ characters }) {
+  return (
+    <div className="Characters">
+      {characters.map((char) => (
+        <p key={char.name}>{char.name}</p>
+      ))}
+    </div>
+  );
+}

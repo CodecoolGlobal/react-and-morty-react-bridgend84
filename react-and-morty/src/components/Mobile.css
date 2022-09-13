@@ -1,6 +1,5 @@
 @media screen and (max-width: 410px) {
-.header {
-display: none;
-}
-    
+  .header {
+    display: none;
+  }
 }
