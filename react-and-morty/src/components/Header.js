@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./Header.css";
 import "./Mobile.css";
 
-export default function Header(props) {
+export default function Header({ whichClicked }) {
   const [clicked, setClicked] = useState(0);
 
   useEffect(() => {
-    props.whichClicked(clicked);
+    whichClicked(clicked);
   }, [clicked]);
 
   return (
