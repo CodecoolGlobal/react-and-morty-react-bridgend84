@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Header.css";
 import "./Mobile.css";
 
-export default function Header({ whichClicked }) {
-  const [clicked, setClicked] = useState(0);
-
-  useEffect(() => {
-    whichClicked(clicked);
-  }, [clicked]);
-
+export default function Header({ onSelect }) {
   return (
     <div className="Header">
       <div className="container-header">
@@ -17,14 +11,11 @@ export default function Header({ whichClicked }) {
       <div className="header-buttons">
         <button
           className="header-characters-button"
-          onClick={() => setClicked(1)}
+          onClick={() => onSelect(1)}
         >
           Characters
         </button>
-        <button
-          className="header-locations-button"
-          onClick={() => setClicked(2)}
-        >
+        <button className="header-locations-button" onClick={() => onSelect(2)}>
           Locations
         </button>
       </div>

@@ -24,9 +24,13 @@ function App() {
       : setIsCharLoaded(true);
   });
 
+  const selected = (p) => {
+    setPage(p);
+  }
+
   return (
     <div className="container-app">
-      <Header whichClicked={(clicked) => setPage(clicked)}/>
+      <Header onSelect={selected}/>
       {page === 0 ? (
         <LandingPage />
       ) : page === 1 ? (
