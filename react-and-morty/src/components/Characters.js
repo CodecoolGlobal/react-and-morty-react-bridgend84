@@ -1,6 +1,5 @@
 import React from "react";
 import "./Characters.css";
-import InfiniteScroll from 'react-infinite-scroller';
 
 export default function Characters({ characters, pageSelector }) {
   return (
