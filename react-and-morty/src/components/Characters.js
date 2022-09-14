@@ -26,7 +26,6 @@ export default function Characters({ characters, pageSelector }) {
           },
         }}
         decisionData={focused}
-        transformOrigin="300 300"
       >
           <div className="character-container">
             {characters.results.map((char) =>
