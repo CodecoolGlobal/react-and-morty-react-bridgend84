@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Characters.css";
+import { Flipper, Flipped } from "react-flip-toolkit";
 
 export default function Characters({ characters, pageSelector }) {
+  const [focused, setFocused] = useState(null);
+  const onClick = (index) => {
+    focused === index ? setFocused(null) : setFocused(index);
+  };
+
   return (
     <div className="Characters">
       <input
@@ -11,15 +17,51 @@ export default function Characters({ characters, pageSelector }) {
         max={characters.info.pages}
         onChange={(e) => pageSelector(e.target.value)}
       />
-      <div className="character-container">
-        {characters.results.map((char) => (
-          <div key={char.id} className="character-card">
-            <img src={char.image}></img>
-            <div>{char.name}</div>
-            <div>{char.species}</div>
+      <Flipper
+        flipKey={focused}
+        spring="super gentle"
+        staggerConfig={{
+          card: {
+            reverse: focused !== null,
+          },
+        }}
+        decisionData={focused}
+        transformOrigin="300 300"
+      >
+          <div className="character-container">
+            {characters.results.map((char) =>
+              focused === char.id ? (
+                <Flipped flipId={char.id}>
+                  <div
+                    key={char.id}
+                    className="character-card-back"
+                    onClick={() => onClick(char.id)}
+                  >
+                    <ul className="list-back"></ul>
+                    <li>Name: {char.name}</li>
+                    <li>Species: {char.species}</li>
+                    <li>Gender: {char.gender}</li>
+                    <li>Location: {char.location.name}</li>
+                    <li>Status: {char.status}</li>
+                    <li>Origin: {char.origin.name}</li>
+                  </div>
+                </Flipped>
+              ) : (
+                <Flipped flipId={char.id}>
+                  <div
+                    key={char.id}
+                    className="character-card-front"
+                    onClick={() => onClick(char.id)}
+                  >
+                    <img src={char.image}></img>
+                    <div className="name-front">{char.name}</div>
+                    <div className="species-front">{char.species}</div>
+                  </div>
+                </Flipped>
+              )
+            )}
           </div>
-        ))}
-      </div>
+      </Flipper>
     </div>
   );
 }
