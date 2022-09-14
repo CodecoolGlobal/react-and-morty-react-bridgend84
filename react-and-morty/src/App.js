@@ -11,10 +11,10 @@ function App() {
   const [page, setPage] = useState(0);
   const [charPage, setCharPage] = useState(1);
   const [locPage, setLocPage] = useState(1);
-  const [scrolledDown, setScrolledDown] = useState(false);
+  const [nextPage, setNextPage] = useState(2);
 
-  let characters = useCharacters(charPage);
-  let locations = useLocations(locPage);
+  const characters = useCharacters(charPage);
+  const locations = useLocations(locPage);
 
   // console.log("Characters data: ");
   // console.log(characters);
@@ -22,11 +22,15 @@ function App() {
   // console.log(locations);
 
   useEffect(() => {
-    characters === "Loading..."
-      ? setIsCharLoaded(false)
-      : setIsCharLoaded(true);
+    if (characters === "Loading...") {
+      setIsCharLoaded(false)
+    }
+    else {
+      setIsCharLoaded(true);
+      setNextPage(Number(characters.info.next.split('=').pop()));
+    }
     window.addEventListener("scroll", handleScroll);
-  }, []);
+  }, [characters]);
 
   const selected = (p) => {
     setPage(p);
@@ -45,7 +49,8 @@ function App() {
       window.innerHeight + e.target.documentElement.scrollTop >=
       e.target.documentElement.scrollHeight
     ) {
-      setScrolledDown(true)
+      setCharPage(nextPage);
+      console.log(`Ide ugrok: ${nextPage}`)
     }
   };
 
@@ -55,7 +60,11 @@ function App() {
       {page === 0 ? (
         <LandingPage />
       ) : page === 1 ? (
-        <Characters characters={characters} pageSelector={charPageSelector} />
+        <Characters
+          characters={characters}
+          pageSelector={charPageSelector}
+          nextPage={(p) => setNextPage(p)}
+        />
       ) : (
         <Locations locations={locations} pageSelector={locPageSelector} />
       )}
