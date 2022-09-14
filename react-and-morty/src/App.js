@@ -11,14 +11,15 @@ function App() {
   const [page, setPage] = useState(0);
   const [charPage, setCharPage] = useState(1);
   const [locPage, setLocPage] = useState(1);
+  const [scrolledDown, setScrolledDown] = useState(false);
 
-  const characters = useCharacters(charPage);
-  const locations = useLocations(locPage);
+  let characters = useCharacters(charPage);
+  let locations = useLocations(locPage);
 
-  console.log("Characters data: ");
-  console.log(characters);
-  console.log("Locations data: ");
-  console.log(locations);
+  // console.log("Characters data: ");
+  // console.log(characters);
+  // console.log("Locations data: ");
+  // console.log(locations);
 
   useEffect(() => {
     characters === "Loading..."
@@ -44,9 +45,10 @@ function App() {
       window.innerHeight + e.target.documentElement.scrollTop >=
       e.target.documentElement.scrollHeight
     ) {
-      charPageSelector(2)
+      setScrolledDown(true)
     }
   };
+
   return (
     <div className="container-app">
       <Header onSelect={selected} />
