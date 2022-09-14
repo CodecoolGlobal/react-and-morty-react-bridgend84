@@ -13,7 +13,7 @@ function App() {
   const [locPage, setLocPage] = useState(1);
 
   const characters = useCharacters(charPage);
-  const locations = useLocations(1);
+  const locations = useLocations(locPage);
 
   console.log("Characters data: ");
   console.log(characters);
@@ -24,6 +24,7 @@ function App() {
     characters === "Loading..."
       ? setIsCharLoaded(false)
       : setIsCharLoaded(true);
+    window.addEventListener("scroll", handleScroll);
   }, []);
 
   const selected = (p) => {
@@ -38,6 +39,14 @@ function App() {
     setLocPage(p);
   };
 
+  const handleScroll = (e) => {
+    if (
+      window.innerHeight + e.target.documentElement.scrollTop >=
+      e.target.documentElement.scrollHeight
+    ) {
+      charPageSelector(2)
+    }
+  };
   return (
     <div className="container-app">
       <Header onSelect={selected} />
