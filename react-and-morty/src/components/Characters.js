@@ -31,7 +31,7 @@ export default function Characters({ characters, pageSelector }) {
           <div className="character-container">
             {characters.results.map((char) =>
               focused === char.id ? (
-                <Flipped flipId={char.id}>
+                <Flipped flipId={char.id} key={char.id}>
                   <div
                     key={char.id}
                     className="character-card-back"
@@ -47,9 +47,9 @@ export default function Characters({ characters, pageSelector }) {
                   </div>
                 </Flipped>
               ) : (
-                <Flipped flipId={char.id}>
+                <Flipped flipId={char.id} key={char.id}>
                   <div
-                    key={char.id}
+                  key={char.id}
                     className="character-card-front"
                     onClick={() => onClick(char.id)}
                   >
