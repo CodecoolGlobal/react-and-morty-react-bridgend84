@@ -1,0 +1,15 @@
+.location-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-content: center;
+}
+
+.location-card {
+  border-style: double;
+  margin: 0.5rem;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  display: block;
+  padding: 0;
+}
