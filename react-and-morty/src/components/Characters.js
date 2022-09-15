@@ -33,13 +33,16 @@ export default function Characters({ characters, pageSelector }) {
 
   return (
     <div className="Characters">
-      <input
-        type="number"
-        defaultValue={1}
-        min={1}
-        max={characters.info.pages}
-        onChange={(e) => pageSelector(e.target.value)}
-      />
+      <div className="page-number-selector-container">
+        <input
+          className="page-number-selector"
+          type="number"
+          defaultValue={1}
+          min={1}
+          max={characters.info.pages}
+          onChange={(e) => pageSelector(e.target.value)}
+        />
+      </div>
       <Flipper
         flipKey={focused}
         spring="super gentle"
@@ -77,8 +80,11 @@ export default function Characters({ characters, pageSelector }) {
                     onClick={() => onClick(char.id)}
                   >
                     <img src={char.image}></img>
-                    <div className="name-front">{char.name}</div>
-                    <div className="species-front">{char.species}</div>
+                    <div className="info-front">
+                      <div className="name-front">{char.name}</div>
+                      <div className="species-front">{char.species}</div>
+                      <div className="placeholder-front"></div>
+                    </div>
                   </div>
                 ) : (
                   <div className="lds-ripple">
