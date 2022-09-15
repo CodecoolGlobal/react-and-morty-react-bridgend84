@@ -109,6 +109,14 @@
   width: 100%;
 }
 
+.char-img {
+  filter: grayscale(1);
+}
+
+.char-img:hover {
+  filter: grayscale(0);
+}
+
 .name-front {
   background-color: #aedae6;
   font-weight: bold;

@@ -79,7 +79,7 @@ export default function Characters({ characters, pageSelector }) {
                     className="character-card-front"
                     onClick={() => onClick(char.id)}
                   >
-                    <img src={char.image}></img>
+                    <img className="char-img"src={char.image}></img>
                     <div className="info-front">
                       <div className="name-front">{char.name}</div>
                       <div className="species-front">{char.species}</div>
