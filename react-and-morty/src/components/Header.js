@@ -5,8 +5,14 @@ import "./Mobile.css";
 export default function Header({ onSelect }) {
   return (
     <div className="Header">
-      <div className="container-header">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Rick_and_Morty.svg" />
+      <div
+        className="container-header"
+        onClick={(event) => (window.location.href = "/")}
+      >
+        <img
+          className="rickandmorty-logo"
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Rick_and_Morty.svg"
+        />
       </div>
       <div className="header-buttons">
         <button

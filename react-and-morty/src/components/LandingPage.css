@@ -1,4 +1,26 @@
-.Landing-page {
-    display: flex;
-    justify-content: center;
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+
+.container-app {
+  background-color: #40261a;
+  height: 100vh;
+}
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Special Elite", cursive;
+  text-align: center;
+}
+
+.landing-page-title {
+  font-size: 4rem;
+  margin: 2rem;
+  color: #42b4ca;
+}
+
+.landing-page-text {
+  font-size: 2rem;
+  margin: 3rem;
+  color: #42b4ca;
 }
