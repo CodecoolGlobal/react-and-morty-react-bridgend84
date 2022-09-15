@@ -1,5 +1,5 @@
-@media screen and (max-width: 410px) {
-  .header {
-    display: none;
+@media screen and (max-width: 428px) {
+  .rickandmorty-logo {
+    width: 5rem;
   }
 }

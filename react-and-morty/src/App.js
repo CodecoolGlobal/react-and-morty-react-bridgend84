@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import "./components/Mobile.css";
 import Header from "./components/Header";
 import { useCharacters, useLocations } from "./api/useData";
 import LandingPage from "./components/LandingPage";

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Characters.css";
+import "./Mobile.css";
 import { Flipper, Flipped } from "react-flip-toolkit";
 
 export default function Characters({ characters, pageSelector }) {
@@ -34,7 +35,11 @@ export default function Characters({ characters, pageSelector }) {
   return (
     <div className="Characters">
       <div className="page-number-selector-container">
+        <label for="page-number" className="page-number-selector">
+          Select page
+        </label>
         <input
+          id="page-number"
           className="page-number-selector"
           type="number"
           defaultValue={1}
