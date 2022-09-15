@@ -27,6 +27,7 @@
   }
 
   .header-characters-button {
+    color: black;
     background-color: #aedae6;
     margin: 0.5rem;
     padding: 2rem;
@@ -77,6 +78,7 @@
   }
 
   .header-locations-button {
+    color: black;
     background-color: #ce85cd;
     margin: 0.5rem;
     padding: 2rem;
@@ -271,7 +273,7 @@
 
   .name-front {
     background-color: #aedae6;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     width: 100%;
     display: flex;
