@@ -13,7 +13,7 @@ function App() {
   const [locPage, setLocPage] = useState(1);
 
   const characters = useCharacters(charPage);
-  const locations = useLocations(1);
+  const locations = useLocations(locPage);
 
   console.log("Characters data: ");
   console.log(characters);
