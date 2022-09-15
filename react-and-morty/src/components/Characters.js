@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Characters.css";
 import { Flipper, Flipped } from "react-flip-toolkit";
 
-export default function Characters({ characters, pageSelector }) {
+export default function Characters({ characters, pageSelector, actualPage }) {
   const [focused, setFocused] = useState(null);
 
   const onClick = (index) => {
@@ -13,7 +13,7 @@ export default function Characters({ characters, pageSelector }) {
     <div className="Characters">
       <input
         type="number"
-        defaultValue={1}
+        value={actualPage}
         min={1}
         max={characters.info.pages}
         onChange={(e) => pageSelector(e.target.value)}

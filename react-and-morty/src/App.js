@@ -11,25 +11,17 @@ function App() {
   const [page, setPage] = useState(0);
   const [charPage, setCharPage] = useState(1);
   const [locPage, setLocPage] = useState(1);
-  const [nextPage, setNextPage] = useState(2);
 
   const characters = useCharacters(charPage);
   const locations = useLocations(locPage);
 
-  // console.log("Characters data: ");
-  // console.log(characters);
-  // console.log("Locations data: ");
-  // console.log(locations);
-
   useEffect(() => {
     if (characters === "Loading...") {
-      setIsCharLoaded(false)
-    }
-    else {
+      setIsCharLoaded(false);
+    } else {
       setIsCharLoaded(true);
-      setNextPage(Number(characters.info.next.split('=').pop()));
+      window.addEventListener("scroll", handleScroll);
     }
-    window.addEventListener("scroll", handleScroll);
   }, [characters]);
 
   const selected = (p) => {
@@ -44,13 +36,21 @@ function App() {
     setLocPage(p);
   };
 
+  let timer;
+
   const handleScroll = (e) => {
     if (
       window.innerHeight + e.target.documentElement.scrollTop >=
-      e.target.documentElement.scrollHeight
+        e.target.documentElement.scrollHeight &&
+      isCharLoaded
     ) {
-      setCharPage(nextPage);
-      console.log(`Ide ugrok: ${nextPage}`)
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        characters.info.pages > charPage
+          ? charPageSelector(charPage + 1)
+          : charPageSelector(1);
+        console.log(charPage);
+      }, 300);
     }
   };
 
@@ -63,7 +63,7 @@ function App() {
         <Characters
           characters={characters}
           pageSelector={charPageSelector}
-          nextPage={(p) => setNextPage(p)}
+          actualPage={charPage}
         />
       ) : (
         <Locations locations={locations} pageSelector={locPageSelector} />
