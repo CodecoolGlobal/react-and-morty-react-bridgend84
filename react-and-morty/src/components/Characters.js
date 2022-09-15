@@ -62,13 +62,15 @@ export default function Characters({ characters, pageSelector }) {
                   className="character-card-back"
                   onClick={() => onClick(char.id)}
                 >
-                  <ul className="list-back"></ul>
-                  <li>Name: {char.name}</li>
-                  <li>Species: {char.species}</li>
-                  <li>Gender: {char.gender}</li>
-                  <li>Location: {char.location.name}</li>
-                  <li>Status: {char.status}</li>
-                  <li>Origin: {char.origin.name}</li>
+                  <div className="info-back">
+                    <ul className="list-back"></ul>
+                    <li>Name: {char.name}</li>
+                    <li>Species: {char.species}</li>
+                    <li>Gender: {char.gender}</li>
+                    <li>Location: {char.location.name}</li>
+                    <li>Status: {char.status}</li>
+                    <li>Origin: {char.origin.name}</li>
+                  </div>
                 </div>
               </Flipped>
             ) : (
@@ -79,7 +81,7 @@ export default function Characters({ characters, pageSelector }) {
                     className="character-card-front"
                     onClick={() => onClick(char.id)}
                   >
-                    <img className="char-img"src={char.image}></img>
+                    <img className="char-img" src={char.image}></img>
                     <div className="info-front">
                       <div className="name-front">{char.name}</div>
                       <div className="species-front">{char.species}</div>
