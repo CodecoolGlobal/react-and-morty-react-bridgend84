@@ -8,6 +8,7 @@ import Locations from "./components/Locations";
 
 function App() {
   const [isCharLoaded, setIsCharLoaded] = useState(false);
+  const [isLocLoaded, setIsLocLoaded] = useState(false);
   const [page, setPage] = useState(0);
   const [charPage, setCharPage] = useState(1);
   const [locPage, setLocPage] = useState(1);
@@ -24,7 +25,13 @@ function App() {
     characters === "Loading..."
       ? setIsCharLoaded(false)
       : setIsCharLoaded(true);
-  }, []);
+  }, [characters]);
+
+  useEffect(() => {
+    locations === "Loading..."
+      ? setIsLocLoaded(false)
+      : setIsLocLoaded(true);
+  }, [locations]);
 
   const selected = (p) => {
     setPage(p);
@@ -40,7 +47,7 @@ function App() {
 
   return (
     <div className="container-app">
-      <Header onSelect={selected} />
+      <Header onSelect={selected} isLocLoaded={isLocLoaded} isCharLoaded={isCharLoaded}/>
       {page === 0 ? (
         <LandingPage />
       ) : page === 1 ? (
