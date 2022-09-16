@@ -34,11 +34,11 @@ test("Click on a location shows more info", async () => {
   );
   await waitFor(() => expect(locationButton[0]).toBeVisible());
   fireEvent.click(locationButton[0]);
-  const cardFronts = container.getElementsByClassName("character-card-front");
+  const cardFronts = container.getElementsByClassName("location-card-front");
   setTimeout(() => {
     fireEvent.click(cardFronts[0]);
   }, 2000);
-  const cardBacks = container.getElementsByClassName("character-card-back");
+  const cardBacks = container.getElementsByClassName("location-card-back");
   await waitFor(() => {
     expect(cardBacks[0]).toBeVisible;
   });

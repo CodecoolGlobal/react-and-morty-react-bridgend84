@@ -35,7 +35,7 @@ export default function Characters({ characters, pageSelector }) {
   return (
     <div className="Characters">
       <div className="page-number-selector-container">
-        <label for="page-number" className="page-number-selector">
+        <label htmlFor="page-number" className="page-number-selector">
           Select page
         </label>
         <input

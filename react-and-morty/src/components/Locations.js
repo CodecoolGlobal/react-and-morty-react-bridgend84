@@ -13,7 +13,7 @@ export default function Locations({ locations, pageSelector }) {
   return (
     <div className="Locations">
       <div className="page-number-selector-container">
-        <label for="page-number-loc" className="page-number-selector">
+        <label htmlFor="page-number-loc" className="page-number-selector">
           Select page
         </label>
         <input
